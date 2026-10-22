@@ -75,9 +75,10 @@ FYERS live data → Feature Engineering → TCN + Isolation Forest inference
 
 ## 5. Installation
 
-**1. Extract the project and navigate into it:**
+**1. Clone the repository and navigate into it:**
 ```bash
-cd AI-Based-Financial-Market-Surveillance-and-Risk-Intelligence-System
+git clone https://github.com/Atharvkalal1/institutional-anomaly-detection-banknifty-options.git
+cd institutional-anomaly-detection-banknifty-options
 ```
 
 **2. Create and activate a virtual environment (Python 3.12.6):**
@@ -121,7 +122,7 @@ The project uses environment variables loaded via `python-dotenv`. Two `.env` fi
 
 ### a) Project root `.env`
 Used for the FYERS broker credentials **and** the chatbot's LLM provider settings:
-(We have included our own api keys.)
+> **Never commit your `.env` file or token files.** Create your own `.env` in the project root with your own keys (template below). `.env`, `access_token.txt` and `refresh_token.txt` are listed in `.gitignore`.
 
 ```env
 # FYERS API credentials (required for live data + authentication)
