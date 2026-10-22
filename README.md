@@ -2,6 +2,12 @@
 
 An end-to-end market surveillance platform for the Bank Nifty index that combines a hybrid deep-learning/classical anomaly detector (TCN Autoencoder + Isolation Forest), an NLP news-ranking engine, a composite risk-scoring module (CARS — Composite Anomaly Risk Score), and a Retrieval-Augmented Generation (RAG) chatbot, all served through a FastAPI backend and a Streamlit dashboard.
 
+<p align="center">
+  <img src="images/dashboard-anomalies.png" alt="Bank Nifty live surveillance dashboard with anomaly markers" width="100%">
+</p>
+
+<p align="center"><em>Live dashboard: 5-minute Bank Nifty candles with TCN / Isolation Forest anomaly markers, the CARS risk score and ranked news.</em></p>
+
 ---
 
 ## 1. Overview
@@ -29,7 +35,72 @@ FYERS live data → Feature Engineering → TCN + Isolation Forest inference
 
 ---
 
-## 3. Prerequisites
+## 3. Screenshots
+
+### Live dashboard
+
+![Live dashboard](images/dashboard-live.png)
+
+*Candlestick and volume chart, live risk score (CARS) with its Rule / Isolation Forest / TCN / news components, and top-ranked news.*
+
+### RAG chatbot
+
+![RAG chatbot](images/chatbot.png)
+
+*Ask questions about anomalies and market news in natural language; answers cite the news sources they were built from.*
+
+### Landing page
+
+<p align="center">
+  <img src="images/landing-hero.png" alt="Landing page hero" width="100%">
+</p>
+
+<details>
+<summary><b>More landing page screenshots</b></summary>
+
+<br>
+
+**What the system does**
+
+![Introduction](images/landing-intro.png)
+
+**Objectives**
+
+![Objectives](images/landing-objectives.png)
+
+**Processing pipeline**
+
+![Processing pipeline](images/landing-pipeline.png)
+
+**Technology stack**
+
+![Technology stack](images/landing-stack.png)
+
+**System architecture**
+
+![System architecture](images/landing-architecture.png)
+
+**Features**
+
+![Features](images/landing-features.png)
+
+**Dashboard preview** (an illustrative mockup on the landing page, not live data)
+
+![Dashboard preview](images/landing-dashboard-preview.png)
+
+**Future scope**
+
+![Future scope](images/landing-future-scope.png)
+
+**Team**
+
+![Team](images/landing-team.png)
+
+</details>
+
+---
+
+## 4. Prerequisites
 
 | Requirement | Notes |
 |---|---|
@@ -41,7 +112,7 @@ FYERS live data → Feature Engineering → TCN + Isolation Forest inference
 
 ---
 
-## 4. Project Structure
+## 5. Project Structure
 
 ```
 .
@@ -67,13 +138,14 @@ FYERS live data → Feature Engineering → TCN + Isolation Forest inference
 ├── nlp_news_engine/           # News fetching, ranking, and snapshotting
 ├── risk_engine/               # CARS composite risk score
 ├── saved_models/               # Pretrained model artifacts (.pkl / .pth)
+├── images/                    # Screenshots used in this README
 ├── config.py                    # Shared constants and paths
 └── requirements.txt
 ```
 
 ---
 
-## 5. Installation
+## 6. Installation
 
 **1. Clone the repository and navigate into it:**
 ```bash
@@ -116,7 +188,7 @@ pip install -r chatbot/requirements-chatbot.txt
 
 ---
 
-## 6. Configuration (`.env`)
+## 7. Configuration (`.env`)
 
 The project uses environment variables loaded via `python-dotenv`. Two `.env` files are used:
 
@@ -147,7 +219,7 @@ SURVEILLANCE_API_URL=http://127.0.0.1:5000   # used by the Streamlit UI to reach
 
 ---
 
-## 7. Execution Commands
+## 8. Execution Commands
 
 Run the following commands **in order**, each in its own terminal (with the virtual environment activated), from the project root.
 
@@ -171,7 +243,7 @@ This serves the combined landing page and live dashboard (candlestick chart, ris
 
 ---
 
-## 8. API Endpoints (FastAPI backend)
+## 9. API Endpoints (FastAPI backend)
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -186,7 +258,7 @@ Interactive API documentation is available at `http://127.0.0.1:5000/docs` once 
 
 ---
 
-## 9. Troubleshooting
+## 10. Troubleshooting
 
 - **`Missing FYERS_APP_ID / FYERS_SECRET_KEY / REDIRECT_URI` on `python data/auth.py`** — Ensure the root `.env` (not just `data/.env`) contains the FYERS credentials; `data/auth.py` reads from the project root.
 - **Backend falls back to `csv-cache`** — Indicates the FYERS token is missing/expired or the API is unreachable; re-run `python data/auth.py`.
@@ -194,3 +266,13 @@ Interactive API documentation is available at `http://127.0.0.1:5000/docs` once 
 - **`ModuleNotFoundError` for NLP or chatbot packages** — Confirm steps 4 and 5 in the Installation section were run in addition to the root `requirements.txt`.
 
 ---
+
+## 11. Team
+
+Built by **Atharv Kalal**, **Priyanka Patel** and **Hrishikesh Chandra** as an academic AI/ML project.
+
+---
+
+## 12. Disclaimer
+
+This is an academic project built for learning and research. It is **not** financial advice, and its risk scores and anomaly flags should not be used to make trading or investment decisions.
