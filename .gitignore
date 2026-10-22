@@ -1,0 +1,29 @@
+# --- Secrets (never commit these) ---
+.env
+*.env
+data/.env
+data/access_token.txt
+data/refresh_token.txt
+access_token.txt
+refresh_token.txt
+
+# --- Logs ---
+*.log
+data/fyersApi.log
+data/fyersRequests.log
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Misc ---
+New Text Document.txt
